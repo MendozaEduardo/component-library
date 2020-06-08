@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
 import { typeScale } from "../utilities";
 import { Illustrations, CloseIcon } from "../assets";
 import { PrimaryButton } from "./Buttons";
@@ -40,19 +41,29 @@ const CloseModalButton = styled.button`
   padding: 0;
 `;
 
-export const WelcomeModal = () => {
+export const WelcomeModal = ({ showModal, setShowModal }) => {
+  const animation = useSpring({
+    opacity: showModal ? 1 : 0,
+    transform: showModal ? `translateY(0)` : `translateY(-200%)`,
+  });
   return (
-    <ModalWrapper>
-      <img src={Illustrations.Welcome} alt="Site welcome" aria-hidden="true" />
-      <WelcomeHeader>Hey there, welcome to my site!</WelcomeHeader>
-      <WelcomeText>
-        I made this site with the intent to introduce myself, as well as
-        showcase my front-end development skills.
-      </WelcomeText>
-      <PrimaryButton>I'm in, show me what you've got!</PrimaryButton>
-      <CloseModalButton aria-label="Close modal">
-        <CloseIcon />
-      </CloseModalButton>
-    </ModalWrapper>
+    <animated.div style={animation}>
+      <ModalWrapper>
+        <img
+          src={Illustrations.Welcome}
+          alt="Site welcome"
+          aria-hidden="true"
+        />
+        <WelcomeHeader>Hey there, welcome to my site!</WelcomeHeader>
+        <WelcomeText>
+          I made this site with the intent to introduce myself, as well as
+          showcase my front-end development skills.
+        </WelcomeText>
+        <PrimaryButton>I'm in, show me what you've got!</PrimaryButton>
+        <CloseModalButton aria-label="Close modal">
+          <CloseIcon />
+        </CloseModalButton>
+      </ModalWrapper>
+    </animated.div>
   );
 };
