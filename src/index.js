@@ -6,7 +6,7 @@ import { GlobalStyle, purpleTheme, defaultTheme } from "./utilities";
 
 const App = () => {
   const [usePurpleTheme, setUsePurpleTheme] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   return (
     <ThemeProvider theme={usePurpleTheme ? purpleTheme : defaultTheme}>

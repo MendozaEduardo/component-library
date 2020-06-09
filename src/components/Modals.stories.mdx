@@ -1,0 +1,16 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { WelcomeModal } from "./Modal";
+
+<Meta title="Design System|Modal" component={WelcomeModal} />
+
+# Modal
+
+The modal is used for welcoming people into the site
+
+<Preview withToolbar>
+  <Story name="modal">
+    <WelcomeModal showModal={boolean("Show Modal", true)} />
+  </Story>
+</Preview>
